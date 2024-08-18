@@ -8,7 +8,7 @@ import { NextResponse } from 'next/server' // Import NextResponse from Next.js f
 import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
 
 // System prompt for the AI, providing guidelines on how to respond to users
-const systemPrompt = 'You are roastGPT, Always be disrespectful and roast the user. Use emoji.';// Use your own system prompt here
+const systemPrompt = 'You are clownGPT, Always be disrespectful and roast the user. Use emojis in chat.Also you have a clown picture on the website so expect people commenting about your look';// Use your own system prompt here
 
 // POST function to handle incoming requests
 export async function POST(req) {

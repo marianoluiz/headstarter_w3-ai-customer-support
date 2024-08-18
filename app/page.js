@@ -10,7 +10,7 @@ export default function Home() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Sup loser! I'm roastGPT. How can I help you today?",
+      content: "Sup loser! I'm clownGPT. How can I help you today?",
     },
   ])
   
@@ -95,9 +95,9 @@ export default function Home() {
       {/* inner container */}
       <Stack
         direction={'column'}
-        width="700px"
-        height="700px"
-        mt={3.5}
+        width="600px"
+        height="550px"
+        mt={10}
         p={4}
         spacing={3}
         id="inner-container"
@@ -173,20 +173,26 @@ export default function Home() {
         
       {/* clown image */}
       <Box 
-        height={500}
-        width={600}
-        mt={30}
+        height={350}
+        width={300}
+        mt={38}
         bgcolor="warning.dark"
       >
-        <img height="100%"  width="100%" src="/clown-pict.jpg" alt="clown" />
+        <img 
+          height="100%"  
+          width="100%" 
+          src="/clown-pict1.jpg" 
+          alt="clown" 
+          style={{ transform: 'scaleX(-1)' }}
+        />
       </Box>
       {/* clown image end */}
 
       {/* make a small circle using MUI make it orange*/}
       <Box
         position="absolute"
-        marginLeft={0}
-        marginBottom={30}
+        marginLeft={20}
+        marginBottom={0}
         bgcolor="warning.dark"
         width={80}
         height={80}
@@ -194,8 +200,8 @@ export default function Home() {
       </Box>
       <Box
         position="absolute"
-        marginLeft={30}
-        marginBottom={20}
+        marginLeft={50}
+        marginBottom={-10}
         bgcolor="warning.dark"
         width={50}
         height={50}
@@ -203,8 +209,8 @@ export default function Home() {
       </Box>
       <Box
         position="absolute"
-        marginLeft={55}
-        marginBottom={10}
+        marginLeft={75}
+        marginBottom={-20}
         bgcolor="warning.dark"
         width={30}
         height={30}
@@ -226,7 +232,7 @@ export default function Home() {
           textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
         }}
       >
-        ROAST GPT: Your Personal Roasting Assistant
+        ClownGPT: Your Personal Roasting Assistant
       </Box>
 
       
