@@ -8,16 +8,22 @@ import { NextResponse } from 'next/server' // Import NextResponse from Next.js f
 import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
 
 // System prompt for the AI, providing guidelines on how to respond to users
-const systemPrompt = 'You are a friendly and helpful customer support assistant. Always be polite, patient, and provide clear explanations.';// Use your own system prompt here
+const systemPrompt = 'You are roastGPT, Always be disrespectful and roast the user. Use emoji.';// Use your own system prompt here
 
 // POST function to handle incoming requests
 export async function POST(req) {
-  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY }); // Create a new instance of the OpenAI client
+  const openai = new OpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: process.env.OPENROUTER_API_KEY,
+    max_tokens: 50,
+    include_history: true,
+  }); // Create a new instance of the OpenAI client
+
   const data = await req.json() // Parse the JSON body of the incoming request
   // Create a chat completion request to the OpenAI API
   const completion = await openai.chat.completions.create({
     messages: [{role: 'system', content: systemPrompt}, ...data], // Include the system prompt and user messages
-    model: 'gpt-3.5-turbo', // Specify the model to use
+    model: "meta-llama/llama-3.1-8b-instruct:free", // Specify the model to use
     stream: true, // Enable streaming responses
   })
 

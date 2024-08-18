@@ -3,11 +3,14 @@
 import { Box, Button, Stack, TextField } from '@mui/material'
 import { useState, useRef, useEffect } from 'react'
 
-export default function Home() {
+
+export default function Home() { 
+
+  /* STATE VARIABLES  */
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm the Headstarter support assistant. How can I help you today?",
+      content: "Sup loser! I'm roastGPT. How can I help you today?",
     },
   ])
   
@@ -16,10 +19,11 @@ export default function Home() {
 
 
   /* send message */
-
+    //This sends post request to the /api/chat endpoint.
   const sendMessage = async () => {
     if (!message.trim()) return;  // Don't send empty messages
-  
+    // Falsy Values: Empty strings ("") are considered falsy.
+
     setMessage('')
     setMessages((messages) => [
       ...messages,
@@ -78,23 +82,35 @@ export default function Home() {
   }, [messages])
 
   return (
+    /* OUTER CONTAINER */
     <Box
       width="100vw"
       height="100vh"
       display="flex"
-      flexDirection="column"
-      justifyContent="center"
+      flexDirection="row"
+      justifyContent="space-around"
       alignItems="center"
+      id="outer-container"
     >
+      {/* inner container */}
       <Stack
         direction={'column'}
-        width="500px"
+        width="700px"
         height="700px"
-        border="1px solid black"
-        p={2}
+        mt={3.5}
+        p={4}
         spacing={3}
+        id="inner-container"
+        borderRadius={8}
+        sx={{
+          backgroundColor: 'white',
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+          backgroundImage: 'linear-gradient(to right, #f6d365, #fda085)',
+        }}
       >
+        {/* MESSAGES MAP */}
         <Stack
+          padding={5}
           direction={'column'}
           spacing={2}
           flexGrow={1}
@@ -112,12 +128,13 @@ export default function Home() {
               <Box
                 bgcolor={
                   message.role === 'assistant'
-                    ? 'primary.main'
-                    : 'secondary.main'
+                    ? 'warning.dark'
+                    : 'secondary.dark'
                 }
                 color="white"
-                borderRadius={16}
+                borderRadius={4}
                 p={3}
+                lineHeight={2}
               >
                 {message.content}
               </Box>
@@ -127,9 +144,9 @@ export default function Home() {
         <div ref={messagesEndRef} />
 
         </Stack>
+          {/* MESSAGES END */}
 
-
-
+        {/* INPUT DIV */}
         <Stack direction={'row'} spacing={2}>
           <TextField
             label="Message"
@@ -142,13 +159,78 @@ export default function Home() {
 
           <Button 
             variant="contained" 
+            sx={{ bgcolor: 'warning.dark' }}
             onClick={sendMessage}
             disabled={isLoading}
           >
             {isLoading ? 'Sending...' : 'Send'}
           </Button>
         </Stack>
+        {/* INPUT DIV END */}
+
       </Stack>
+      {/* INNER CONTAINER END */}
+        
+      {/* clown image */}
+      <Box 
+        height={500}
+        width={600}
+        mt={30}
+        bgcolor="warning.dark"
+      >
+        <img height="100%"  width="100%" src="/clown-pict.jpg" alt="clown" />
+      </Box>
+      {/* clown image end */}
+
+      {/* make a small circle using MUI make it orange*/}
+      <Box
+        position="absolute"
+        marginLeft={0}
+        marginBottom={30}
+        bgcolor="warning.dark"
+        width={80}
+        height={80}
+        borderRadius="50%">
+      </Box>
+      <Box
+        position="absolute"
+        marginLeft={30}
+        marginBottom={20}
+        bgcolor="warning.dark"
+        width={50}
+        height={50}
+        borderRadius="50%">
+      </Box>
+      <Box
+        position="absolute"
+        marginLeft={55}
+        marginBottom={10}
+        bgcolor="warning.dark"
+        width={30}
+        height={30}
+        borderRadius="50%">
+      </Box>
+          
+      <Box
+        position="absolute"
+        top={0}
+        left={0}
+        width="100%"
+        py={3}
+        textAlign="center"
+        sx={{
+          backgroundColor: 'purple',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '24px',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+        }}
+      >
+        ROAST GPT: Your Personal Roasting Assistant
+      </Box>
+
+      
     </Box>
+    /* OUTER CONTAINER END*/
   )
 }
